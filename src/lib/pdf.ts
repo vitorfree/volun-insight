@@ -142,7 +142,7 @@ export async function gerarPDF(
 
     // ========== PAGE 3 — Forças & Gaps ==========
     doc.addPage();
-    pageHeader(doc, "Forças &amp; Gaps Críticos", logoBranco);
+    pageHeader(doc, "Forças & Gaps Críticos", logoBranco);
     y = 40;
     setText(NAVY); doc.setFont("helvetica", "bold"); doc.setFontSize(13);
     doc.text("✓ Pontos Fortes", M, y); y += 6;
