@@ -3,6 +3,9 @@ import { Logo, DownloadIcon } from "./Logo";
 import { DIMENSIONS, getLevel, QUESTIONS } from "@/lib/diagnostic";
 import type { LeadData } from "./Gate";
 import { gerarPDF } from "@/lib/pdf";
+import grafLupa from "@/assets/graf-lupa.png";
+import grafPorta from "@/assets/graf-porta.png";
+import grafBalao from "@/assets/graf-balao.png";
 
 export interface ReportData {
   sumario: string;
