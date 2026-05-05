@@ -53,7 +53,7 @@ export function Landing({ onStart }: { onStart: () => void }) {
             <em className="not-italic font-serif italic text-forest">empresa</em>?
           </h1>
           <p className="text-navy/80 text-lg leading-relaxed mb-8 max-w-2xl">
-            Em 8 minutos, descubra o nível de maturidade do seu programa de voluntariado corporativo
+            Em 5 minutos, descubra o nível de maturidade do seu programa de voluntariado corporativo
             e receba um relatório com gráficos, análise por dimensão e recomendações personalizadas.
           </p>
           <button
