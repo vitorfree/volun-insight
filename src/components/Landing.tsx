@@ -10,7 +10,6 @@ export function Landing({ onStart }: { onStart: () => void }) {
     { img: grafLupa, title: "Score geral + análise por dimensão", desc: "Radar visual com pontuação em 5 pilares" },
     { img: grafLapis, title: "Diagnóstico detalhado com gaps e forças", desc: "Identificação dos pontos críticos e diferenciais" },
     { img: grafPorta, title: "Plano de ação com 3 horizontes", desc: "Recomendações para curto, médio e longo prazo" },
-    { img: grafBalao, title: "Gerado por inteligência artificial", desc: "Análise consultiva com benchmarks do setor brasileiro" },
   ];
 
   return (
