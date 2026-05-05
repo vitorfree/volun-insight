@@ -138,6 +138,7 @@ export async function gerarPDF(
       setFill(c); doc.roundedRect(M, y + 2, ((W - 2 * M) * sc) / 100, 4, 2, 2, "F");
       y += 12;
     });
+    doc.addImage(imgLapis, "PNG", W - M - 38, H - 60, 36, 42, undefined, "FAST");
     rodape(2);
 
     // ========== PAGE 3 — Forças & Gaps ==========
@@ -168,6 +169,7 @@ export async function gerarPDF(
       doc.text(lines, M + 6, y + 5);
       y += h + 3;
     });
+    doc.addImage(imgBalao, "PNG", W - M - 42, H - 50, 40, 32, undefined, "FAST");
     rodape(3);
 
     // ========== PAGE 4 — Análise por Dimensão ==========
@@ -188,6 +190,7 @@ export async function gerarPDF(
       doc.text(lines, M + 4, y + 15);
       y += blockH + 4;
     });
+    doc.addImage(imgLupa, "PNG", W - M - 36, H - 56, 34, 38, undefined, "FAST");
     rodape(4);
 
     // ========== PAGE 5 — Plano de Ação ==========
@@ -213,6 +216,7 @@ export async function gerarPDF(
       doc.text(`Impacto: ${rec.impacto}`, M + 14 + doc.getTextWidth(rec.prazo), py);
       y += h + 4;
     });
+    doc.addImage(imgMao, "PNG", M, H - 56, 38, 38, undefined, "FAST");
     rodape(5);
 
     // ========== PAGE 6 — Próximos Passos ==========
