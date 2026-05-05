@@ -96,6 +96,7 @@ export async function gerarPDF(
     doc.addPage();
     setFill(NAVY); doc.rect(0, 0, W, 28, "F");
     setFill(LIME); doc.rect(0, 28, W, 1.5, "F");
+    doc.addImage(logoBranco, "PNG", W - M - 32, 10, 28, 9, undefined, "FAST");
     setText([255, 255, 255]); doc.setFont("helvetica", "bold"); doc.setFontSize(16);
     doc.text("Score & Sumário Executivo", M, 18);
 
