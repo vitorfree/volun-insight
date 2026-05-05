@@ -203,7 +203,7 @@ export function Result({
           <img src={grafBalao} alt="" aria-hidden className="pointer-events-none absolute -right-8 -top-10 w-[200px] opacity-25 select-none" />
           <div className="relative">
           <h3 className="font-serif text-2xl text-white mb-2">Pronto para evoluir seu programa?</h3>
-          <p className="text-white/70 mb-5">{report.mensagem_final}</p>
+          <p className="text-white/85 mb-5">{report.mensagem_final}</p>
           <a
             href="https://freehelper.com.br"
             target="_blank"
@@ -212,6 +212,7 @@ export function Result({
           >
             Falar com a Freehelper →
           </a>
+          </div>
         </div>
       </main>
     </div>
