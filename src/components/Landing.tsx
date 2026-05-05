@@ -66,9 +66,9 @@ export function Landing({ onStart }: { onStart: () => void }) {
 
           <div className="grid grid-cols-3 gap-0 mt-12 pt-8 border-t border-navy/15 w-full max-w-xl">
             {[
-              ["15", "Perguntas"],
+              ["10", "Perguntas"],
               ["5", "Dimensões"],
-              ["8min", "Para completar"],
+              ["5min", "Para completar"],
             ].map(([n, l], i) => (
               <div key={i} className={`px-4 ${i > 0 ? "border-l border-navy/15" : ""}`}>
                 <div className="font-serif text-3xl text-navy">{n}</div>
