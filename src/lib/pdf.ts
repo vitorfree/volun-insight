@@ -142,7 +142,7 @@ export async function gerarPDF(
 
     // ========== PAGE 3 — Forças & Gaps ==========
     doc.addPage();
-    pageHeader(doc, "Forças & Gaps Críticos");
+    pageHeader(doc, "Forças &amp; Gaps Críticos", logoBranco);
     y = 40;
     setText(NAVY); doc.setFont("helvetica", "bold"); doc.setFontSize(13);
     doc.text("✓ Pontos Fortes", M, y); y += 6;
@@ -172,7 +172,7 @@ export async function gerarPDF(
 
     // ========== PAGE 4 — Análise por Dimensão ==========
     doc.addPage();
-    pageHeader(doc, "Análise por Dimensão");
+    pageHeader(doc, "Análise por Dimensão", logoBranco);
     y = 40;
     DIMENSIONS.forEach((d) => {
       const txt = report.analise_dimensoes[d.key] || "—";
@@ -192,7 +192,7 @@ export async function gerarPDF(
 
     // ========== PAGE 5 — Plano de Ação ==========
     doc.addPage();
-    pageHeader(doc, "Plano de Ação");
+    pageHeader(doc, "Plano de Ação", logoBranco);
     y = 40;
     report.recomendacoes.forEach((rec, i) => {
       const lines = doc.splitTextToSize(rec.descricao, W - 2 * M - 10);
@@ -217,7 +217,7 @@ export async function gerarPDF(
 
     // ========== PAGE 6 — Próximos Passos ==========
     doc.addPage();
-    pageHeader(doc, "Próximos Passos");
+    pageHeader(doc, "Próximos Passos", logoBranco);
     y = 40;
     // Mensagem final
     const mfLines = doc.splitTextToSize(report.mensagem_final, W - 2 * M - 10);
