@@ -198,7 +198,10 @@ export function Result({
         </Card>
 
         {/* CTA */}
-        <div className="bg-navy rounded-[20px] p-8 border-2 border-lime text-center">
+        <div className="relative overflow-hidden bg-navy rounded-[20px] p-8 border-2 border-lime text-center">
+          <img src={grafPorta} alt="" aria-hidden className="pointer-events-none absolute -left-8 -bottom-10 w-[180px] opacity-30 select-none" />
+          <img src={grafBalao} alt="" aria-hidden className="pointer-events-none absolute -right-8 -top-10 w-[200px] opacity-25 select-none" />
+          <div className="relative">
           <h3 className="font-serif text-2xl text-white mb-2">Pronto para evoluir seu programa?</h3>
           <p className="text-white/70 mb-5">{report.mensagem_final}</p>
           <a
