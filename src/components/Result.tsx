@@ -72,7 +72,8 @@ export function Result({
 
         {/* Score card */}
         <div className="relative overflow-hidden bg-navy rounded-[20px] p-8 md:p-10 grid md:grid-cols-2 gap-8 items-center radial-decor">
-          <div className="flex justify-center">
+          <img src={grafLupa} alt="" aria-hidden className="pointer-events-none absolute -right-12 -bottom-10 w-[260px] opacity-25 select-none" />
+          <div className="relative flex justify-center">
             <svg width="200" height="200" viewBox="0 0 200 200">
               <circle cx="100" cy="100" r={r} fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="14" />
               <circle
