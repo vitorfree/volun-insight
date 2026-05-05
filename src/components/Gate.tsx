@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Logo, DownloadIcon } from "./Logo";
 import { User, Mail, Building2, BadgeCheck, Users } from "lucide-react";
+import grafMao from "@/assets/graf-mao.png";
 
 export interface LeadData {
   nome: string;
@@ -36,31 +37,34 @@ export function Gate({ onSubmit }: { onSubmit: (l: LeadData) => void }) {
     <div className="min-h-screen bg-navy radial-decor flex items-center justify-center p-4 md:p-8">
       <div className="w-full max-w-[960px] grid md:grid-cols-2 rounded-[24px] overflow-hidden shadow-strong">
         {/* Left */}
-        <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-[52px] hidden md:block">
-          <div className="text-cyan text-sm font-medium mb-3">Quase lá!</div>
-          <h2 className="font-serif text-4xl text-white mb-4">
-            Seu diagnóstico está <em className="font-serif italic" style={{ color: "hsl(var(--lime))" }}>pronto</em>
-          </h2>
-          <p className="text-white/70 mb-8">
-            Preencha os dados abaixo para acessar seu relatório personalizado.
-          </p>
-          <div className="space-y-5">
-            {[
-              ["📄", "Relatório PDF completo", "Análise consultiva detalhada"],
-              ["🎯", "Plano de ação personalizado", "Curto, médio e longo prazo"],
-              ["🤝", "Consultoria especializada", "Time freehelper à disposição"],
-              ["🔒", "100% seguro e gratuito", "Dados protegidos pela LGPD"],
-            ].map(([i, t, d], k) => (
-              <div key={k} className="flex gap-4">
-                <div className="w-11 h-11 rounded-xl bg-cyan/15 border border-cyan/30 flex items-center justify-center text-lg shrink-0">
-                  {i}
+        <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-[52px] hidden md:block overflow-hidden">
+          <img src={grafMao} alt="" aria-hidden className="pointer-events-none absolute -right-10 -bottom-8 w-[240px] opacity-30 select-none" />
+          <div className="relative">
+            <div className="text-cyan text-sm font-medium mb-3">Quase lá!</div>
+            <h2 className="font-serif text-4xl text-white mb-4">
+              Seu diagnóstico está <em className="font-serif italic" style={{ color: "hsl(var(--lime))" }}>pronto</em>
+            </h2>
+            <p className="text-white/85 mb-8">
+              Preencha os dados abaixo para acessar seu relatório personalizado.
+            </p>
+            <div className="space-y-5">
+              {[
+                ["📄", "Relatório PDF completo", "Análise consultiva detalhada"],
+                ["🎯", "Plano de ação personalizado", "Curto, médio e longo prazo"],
+                ["🤝", "Consultoria especializada", "Time freehelper à disposição"],
+                ["🔒", "100% seguro e gratuito", "Dados protegidos pela LGPD"],
+              ].map(([i, t, d], k) => (
+                <div key={k} className="flex gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-cyan/15 border border-cyan/30 flex items-center justify-center text-lg shrink-0">
+                    {i}
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold">{t}</div>
+                    <div className="text-white/75 text-sm">{d}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-white font-semibold">{t}</div>
-                  <div className="text-white/60 text-sm">{d}</div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
