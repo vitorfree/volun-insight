@@ -23,17 +23,12 @@ export function Landing({ onStart }: { onStart: () => void }) {
         className="pointer-events-none absolute -right-20 -top-16 w-[360px] opacity-30 select-none"
       />
       <img
-        src={grafMao}
+        src={grafPorta}
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -left-16 top-1/3 w-[260px] opacity-20 select-none hidden md:block"
+        className="pointer-events-none absolute -left-10 -bottom-12 w-[200px] opacity-25 select-none"
       />
-      <img
-        src={grafBalao}
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute right-[-60px] bottom-[-30px] w-[260px] opacity-25 select-none"
-      />
+
       <img
         src={grafPorta}
         alt=""
