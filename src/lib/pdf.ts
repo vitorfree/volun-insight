@@ -267,10 +267,11 @@ export async function gerarPDF(
   }
 }
 
-function pageHeader(doc: jsPDF, title: string) {
+function pageHeader(doc: jsPDF, title: string, logo?: string) {
   const W = 210, M = 20;
   doc.setFillColor(3, 3, 140); doc.rect(0, 0, W, 28, "F");
   doc.setFillColor(213, 244, 101); doc.rect(0, 28, W, 1.5, "F");
+  if (logo) doc.addImage(logo, "PNG", W - M - 28, 10, 24, 8, undefined, "FAST");
   doc.setTextColor(255, 255, 255); doc.setFont("helvetica", "bold"); doc.setFontSize(16);
   doc.text(title, M, 18);
 }
