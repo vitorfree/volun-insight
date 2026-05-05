@@ -86,7 +86,9 @@ export function Landing({ onStart }: { onStart: () => void }) {
             {features.map((f, i) => (
               <div
                 key={i}
-                className="bg-white border border-navy/10 rounded-2xl p-5 flex gap-4 items-center transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-soft cursor-default"
+                className={`bg-white border border-navy/10 rounded-2xl p-5 flex gap-4 items-center transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-soft cursor-default ${
+                  i === 2 ? "sm:col-span-2 sm:max-w-md sm:mx-auto sm:w-full" : ""
+                }`}
               >
                 <img src={f.img} alt="" aria-hidden className="w-12 h-12 object-contain shrink-0" />
                 <div>
