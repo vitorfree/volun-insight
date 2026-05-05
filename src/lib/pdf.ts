@@ -2,6 +2,24 @@ import jsPDF from "jspdf";
 import type { LeadData } from "@/components/Gate";
 import type { ReportData } from "@/components/Result";
 import { DIMENSIONS } from "./diagnostic";
+import grafLupa from "@/assets/graf-lupa.png";
+import grafPorta from "@/assets/graf-porta.png";
+import grafLapis from "@/assets/graf-lapis.png";
+import grafBalao from "@/assets/graf-balao.png";
+import grafMao from "@/assets/graf-mao.png";
+import letteringBranco from "@/assets/freehelper-branco.png";
+import letteringAzul from "@/assets/freehelper-azul.png";
+
+async function toDataURL(url: string): Promise<string> {
+  const res = await fetch(url);
+  const blob = await res.blob();
+  return await new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result as string);
+    r.onerror = reject;
+    r.readAsDataURL(blob);
+  });
+}
 
 const NAVY: [number, number, number] = [3, 3, 140];
 const CYAN: [number, number, number] = [128, 222, 255];
@@ -10,13 +28,22 @@ const FOREST: [number, number, number] = [16, 89, 58];
 const RED: [number, number, number] = [226, 50, 57];
 const OFF: [number, number, number] = [247, 249, 237];
 
-export function gerarPDF(
+export async function gerarPDF(
   lead: LeadData,
   scores: { total: number; dims: Record<string, number> },
   level: { name: string; color: string; desc: string },
   report: ReportData
 ) {
   try {
+    const [imgLupa, imgPorta, imgLapis, imgBalao, imgMao, logoBranco, logoAzul] = await Promise.all([
+      toDataURL(grafLupa),
+      toDataURL(grafPorta),
+      toDataURL(grafLapis),
+      toDataURL(grafBalao),
+      toDataURL(grafMao),
+      toDataURL(letteringBranco),
+      toDataURL(letteringAzul),
+    ]);
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const W = 210, H = 297, M = 20;
 
