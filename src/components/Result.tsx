@@ -3,6 +3,9 @@ import { Logo, DownloadIcon } from "./Logo";
 import { DIMENSIONS, getLevel, QUESTIONS } from "@/lib/diagnostic";
 import type { LeadData } from "./Gate";
 import { gerarPDF } from "@/lib/pdf";
+import grafLupa from "@/assets/graf-lupa.png";
+import grafPorta from "@/assets/graf-porta.png";
+import grafBalao from "@/assets/graf-balao.png";
 
 export interface ReportData {
   sumario: string;
@@ -69,7 +72,8 @@ export function Result({
 
         {/* Score card */}
         <div className="relative overflow-hidden bg-navy rounded-[20px] p-8 md:p-10 grid md:grid-cols-2 gap-8 items-center radial-decor">
-          <div className="flex justify-center">
+          <img src={grafLupa} alt="" aria-hidden className="pointer-events-none absolute -right-12 -bottom-10 w-[260px] opacity-25 select-none" />
+          <div className="relative flex justify-center">
             <svg width="200" height="200" viewBox="0 0 200 200">
               <circle cx="100" cy="100" r={r} fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="14" />
               <circle
@@ -194,9 +198,12 @@ export function Result({
         </Card>
 
         {/* CTA */}
-        <div className="bg-navy rounded-[20px] p-8 border-2 border-lime text-center">
+        <div className="relative overflow-hidden bg-navy rounded-[20px] p-8 border-2 border-lime text-center">
+          <img src={grafPorta} alt="" aria-hidden className="pointer-events-none absolute -left-8 -bottom-10 w-[180px] opacity-30 select-none" />
+          <img src={grafBalao} alt="" aria-hidden className="pointer-events-none absolute -right-8 -top-10 w-[200px] opacity-25 select-none" />
+          <div className="relative">
           <h3 className="font-serif text-2xl text-white mb-2">Pronto para evoluir seu programa?</h3>
-          <p className="text-white/70 mb-5">{report.mensagem_final}</p>
+          <p className="text-white/85 mb-5">{report.mensagem_final}</p>
           <a
             href="https://freehelper.com.br"
             target="_blank"
@@ -205,6 +212,7 @@ export function Result({
           >
             Falar com a Freehelper →
           </a>
+          </div>
         </div>
       </main>
     </div>

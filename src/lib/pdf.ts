@@ -2,6 +2,24 @@ import jsPDF from "jspdf";
 import type { LeadData } from "@/components/Gate";
 import type { ReportData } from "@/components/Result";
 import { DIMENSIONS } from "./diagnostic";
+import grafLupa from "@/assets/graf-lupa.png";
+import grafPorta from "@/assets/graf-porta.png";
+import grafLapis from "@/assets/graf-lapis.png";
+import grafBalao from "@/assets/graf-balao.png";
+import grafMao from "@/assets/graf-mao.png";
+import letteringBranco from "@/assets/freehelper-branco.png";
+import letteringAzul from "@/assets/freehelper-azul.png";
+
+async function toDataURL(url: string): Promise<string> {
+  const res = await fetch(url);
+  const blob = await res.blob();
+  return await new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result as string);
+    r.onerror = reject;
+    r.readAsDataURL(blob);
+  });
+}
 
 const NAVY: [number, number, number] = [3, 3, 140];
 const CYAN: [number, number, number] = [128, 222, 255];
@@ -10,13 +28,22 @@ const FOREST: [number, number, number] = [16, 89, 58];
 const RED: [number, number, number] = [226, 50, 57];
 const OFF: [number, number, number] = [247, 249, 237];
 
-export function gerarPDF(
+export async function gerarPDF(
   lead: LeadData,
   scores: { total: number; dims: Record<string, number> },
   level: { name: string; color: string; desc: string },
   report: ReportData
 ) {
   try {
+    const [imgLupa, imgPorta, imgLapis, imgBalao, imgMao, logoBranco, logoAzul] = await Promise.all([
+      toDataURL(grafLupa),
+      toDataURL(grafPorta),
+      toDataURL(grafLapis),
+      toDataURL(grafBalao),
+      toDataURL(grafMao),
+      toDataURL(letteringBranco),
+      toDataURL(letteringAzul),
+    ]);
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const W = 210, H = 297, M = 20;
 
@@ -36,12 +63,14 @@ export function gerarPDF(
     setFill(NAVY); doc.rect(0, 0, W, H, "F");
     setFill([10, 10, 110]); doc.roundedRect(M, M, W - 2 * M, H - 2 * M, 8, 8, "F");
     setFill(LIME); doc.rect(M, M, 4, H - 2 * M, "F");
-    setFill(CYAN); doc.ellipse(W - M - 8, H - M - 18, 28, 18, "F");
+    // Decorative graphics on cover
+    doc.addImage(imgLupa, "PNG", W - M - 70, M + 8, 60, 60, undefined, "FAST");
+    doc.addImage(imgPorta, "PNG", W - M - 55, H - M - 70, 50, 60, undefined, "FAST");
 
-    setText(CYAN); doc.setFont("helvetica", "bold"); doc.setFontSize(28);
-    doc.text("freehelper", M + 16, M + 28);
-    doc.setFont("helvetica", "normal"); doc.setFontSize(11);
-    doc.text("Soluções de Impacto Social", M + 16, M + 36);
+    // Logo lettering (white)
+    doc.addImage(logoBranco, "PNG", M + 16, M + 18, 60, 12, undefined, "FAST");
+    setText(CYAN); doc.setFont("helvetica", "normal"); doc.setFontSize(11);
+    doc.text("Soluções de Impacto Social", M + 16, M + 38);
 
     setText([255, 255, 255]); doc.setFont("helvetica", "bold"); doc.setFontSize(28);
     doc.text("Diagnóstico de", M + 16, M + 70);
@@ -67,6 +96,7 @@ export function gerarPDF(
     doc.addPage();
     setFill(NAVY); doc.rect(0, 0, W, 28, "F");
     setFill(LIME); doc.rect(0, 28, W, 1.5, "F");
+    doc.addImage(logoBranco, "PNG", W - M - 32, 10, 28, 9, undefined, "FAST");
     setText([255, 255, 255]); doc.setFont("helvetica", "bold"); doc.setFontSize(16);
     doc.text("Score & Sumário Executivo", M, 18);
 
@@ -108,11 +138,12 @@ export function gerarPDF(
       setFill(c); doc.roundedRect(M, y + 2, ((W - 2 * M) * sc) / 100, 4, 2, 2, "F");
       y += 12;
     });
+    doc.addImage(imgLapis, "PNG", W - M - 38, H - 60, 36, 42, undefined, "FAST");
     rodape(2);
 
     // ========== PAGE 3 — Forças & Gaps ==========
     doc.addPage();
-    pageHeader(doc, "Forças & Gaps Críticos");
+    pageHeader(doc, "Forças & Gaps Críticos", logoBranco);
     y = 40;
     setText(NAVY); doc.setFont("helvetica", "bold"); doc.setFontSize(13);
     doc.text("✓ Pontos Fortes", M, y); y += 6;
@@ -138,11 +169,12 @@ export function gerarPDF(
       doc.text(lines, M + 6, y + 5);
       y += h + 3;
     });
+    doc.addImage(imgBalao, "PNG", W - M - 42, H - 50, 40, 32, undefined, "FAST");
     rodape(3);
 
     // ========== PAGE 4 — Análise por Dimensão ==========
     doc.addPage();
-    pageHeader(doc, "Análise por Dimensão");
+    pageHeader(doc, "Análise por Dimensão", logoBranco);
     y = 40;
     DIMENSIONS.forEach((d) => {
       const txt = report.analise_dimensoes[d.key] || "—";
@@ -158,11 +190,12 @@ export function gerarPDF(
       doc.text(lines, M + 4, y + 15);
       y += blockH + 4;
     });
+    doc.addImage(imgLupa, "PNG", W - M - 36, H - 56, 34, 38, undefined, "FAST");
     rodape(4);
 
     // ========== PAGE 5 — Plano de Ação ==========
     doc.addPage();
-    pageHeader(doc, "Plano de Ação");
+    pageHeader(doc, "Plano de Ação", logoBranco);
     y = 40;
     report.recomendacoes.forEach((rec, i) => {
       const lines = doc.splitTextToSize(rec.descricao, W - 2 * M - 10);
@@ -183,11 +216,12 @@ export function gerarPDF(
       doc.text(`Impacto: ${rec.impacto}`, M + 14 + doc.getTextWidth(rec.prazo), py);
       y += h + 4;
     });
+    doc.addImage(imgMao, "PNG", M, H - 56, 38, 38, undefined, "FAST");
     rodape(5);
 
     // ========== PAGE 6 — Próximos Passos ==========
     doc.addPage();
-    pageHeader(doc, "Próximos Passos");
+    pageHeader(doc, "Próximos Passos", logoBranco);
     y = 40;
     // Mensagem final
     const mfLines = doc.splitTextToSize(report.mensagem_final, W - 2 * M - 10);
@@ -237,10 +271,11 @@ export function gerarPDF(
   }
 }
 
-function pageHeader(doc: jsPDF, title: string) {
+function pageHeader(doc: jsPDF, title: string, logo?: string) {
   const W = 210, M = 20;
   doc.setFillColor(3, 3, 140); doc.rect(0, 0, W, 28, "F");
   doc.setFillColor(213, 244, 101); doc.rect(0, 28, W, 1.5, "F");
+  if (logo) doc.addImage(logo, "PNG", W - M - 28, 10, 24, 8, undefined, "FAST");
   doc.setTextColor(255, 255, 255); doc.setFont("helvetica", "bold"); doc.setFontSize(16);
   doc.text(title, M, 18);
 }

@@ -1,17 +1,18 @@
 import { Clock, Download } from "lucide-react";
+import letteringAzul from "@/assets/freehelper-azul.png";
+import letteringBranco from "@/assets/freehelper-branco.png";
 
 export function Logo({ color = "#ffffff", size = 28 }: { color?: string; size?: number }) {
+  // Use white lettering on dark backgrounds, blue lettering on light ones
+  const isDark = color.toLowerCase() === "#ffffff" || color.toLowerCase() === "#fff";
+  const src = isDark ? letteringBranco : letteringAzul;
+  // size controls height in px; width auto
   return (
-    <div className="flex items-center gap-2.5">
-      <svg width={size} height={size} viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="8" r="3.5" fill={color} />
-        <path
-          d="M16 13c-3.5 0-6 2-7.5 4.5L4 24l2.5 1.5 4-5v8h3v-6h2.5v6h3v-8l4 5L26 24l-4.5-6.5C20 15 18 13 16 13Z"
-          fill={color}
-        />
-      </svg>
-      <span style={{ color, fontWeight: 700, fontSize: 22, letterSpacing: "-0.01em" }}>freehelper</span>
-    </div>
+    <img
+      src={src}
+      alt="freehelper"
+      style={{ height: size, width: "auto", display: "block" }}
+    />
   );
 }
 
