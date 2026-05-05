@@ -63,12 +63,14 @@ export async function gerarPDF(
     setFill(NAVY); doc.rect(0, 0, W, H, "F");
     setFill([10, 10, 110]); doc.roundedRect(M, M, W - 2 * M, H - 2 * M, 8, 8, "F");
     setFill(LIME); doc.rect(M, M, 4, H - 2 * M, "F");
-    setFill(CYAN); doc.ellipse(W - M - 8, H - M - 18, 28, 18, "F");
+    // Decorative graphics on cover
+    doc.addImage(imgLupa, "PNG", W - M - 70, M + 8, 60, 60, undefined, "FAST");
+    doc.addImage(imgPorta, "PNG", W - M - 55, H - M - 70, 50, 60, undefined, "FAST");
 
-    setText(CYAN); doc.setFont("helvetica", "bold"); doc.setFontSize(28);
-    doc.text("freehelper", M + 16, M + 28);
-    doc.setFont("helvetica", "normal"); doc.setFontSize(11);
-    doc.text("Soluções de Impacto Social", M + 16, M + 36);
+    // Logo lettering (white)
+    doc.addImage(logoBranco, "PNG", M + 16, M + 18, 60, 12, undefined, "FAST");
+    setText(CYAN); doc.setFont("helvetica", "normal"); doc.setFontSize(11);
+    doc.text("Soluções de Impacto Social", M + 16, M + 38);
 
     setText([255, 255, 255]); doc.setFont("helvetica", "bold"); doc.setFontSize(28);
     doc.text("Diagnóstico de", M + 16, M + 70);
