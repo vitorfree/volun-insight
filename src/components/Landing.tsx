@@ -71,8 +71,8 @@ export function Landing({ onStart }: { onStart: () => void }) {
               ["5min", "Para completar"],
             ].map(([n, l], i) => (
               <div key={i} className={`px-4 ${i > 0 ? "border-l border-navy/15" : ""}`}>
-                <div className="font-serif text-3xl text-navy">{n}</div>
-                <div className="text-navy/70 text-sm mt-1">{l}</div>
+                <div className="font-serif text-3xl text-forest">{n}</div>
+                <div className="text-forest/70 text-sm mt-1">{l}</div>
               </div>
             ))}
           </div>
