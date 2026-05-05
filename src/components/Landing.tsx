@@ -53,7 +53,7 @@ export function Landing({ onStart }: { onStart: () => void }) {
             <em className="not-italic font-serif italic text-forest">empresa</em>?
           </h1>
           <p className="text-navy/80 text-lg leading-relaxed mb-8 max-w-2xl">
-            Em 8 minutos, descubra o nível de maturidade do seu programa de voluntariado corporativo
+            Em 5 minutos, descubra o nível de maturidade do seu programa de voluntariado corporativo
             e receba um relatório com gráficos, análise por dimensão e recomendações personalizadas.
           </p>
           <button
@@ -66,9 +66,9 @@ export function Landing({ onStart }: { onStart: () => void }) {
 
           <div className="grid grid-cols-3 gap-0 mt-12 pt-8 border-t border-navy/15 w-full max-w-xl">
             {[
-              ["15", "Perguntas"],
+              ["10", "Perguntas"],
               ["5", "Dimensões"],
-              ["8min", "Para completar"],
+              ["5min", "Para completar"],
             ].map(([n, l], i) => (
               <div key={i} className={`px-4 ${i > 0 ? "border-l border-navy/15" : ""}`}>
                 <div className="font-serif text-3xl text-navy">{n}</div>
