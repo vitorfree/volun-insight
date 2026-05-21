@@ -11,6 +11,16 @@ export interface LeadData {
   size: string;
 }
 
+const Field = ({ icon: Icon, ...props }: any) => (
+  <div className="relative">
+    <Icon size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-navy/50" strokeWidth={2} />
+    <input
+      {...props}
+      className="w-full bg-white border-[1.5px] border-[#e4e4f0] rounded-xl pl-11 pr-3 py-3 outline-none transition-colors focus:border-navy text-navy placeholder:text-navy/40"
+    />
+  </div>
+);
+
 export function Gate({ onSubmit }: { onSubmit: (l: LeadData) => void }) {
   const [data, setData] = useState<LeadData>({ nome: "", email: "", empresa: "", cargo: "", size: "" });
   const [error, setError] = useState("");
@@ -22,16 +32,6 @@ export function Gate({ onSubmit }: { onSubmit: (l: LeadData) => void }) {
     setError("");
     onSubmit(data);
   };
-
-  const Field = ({ icon: Icon, ...props }: any) => (
-    <div className="relative">
-      <Icon size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-navy/50" strokeWidth={2} />
-      <input
-        {...props}
-        className="w-full bg-white border-[1.5px] border-[#e4e4f0] rounded-xl pl-11 pr-3 py-3 outline-none transition-colors focus:border-navy text-navy placeholder:text-navy/40"
-      />
-    </div>
-  );
 
   return (
     <div className="min-h-screen bg-navy radial-decor flex items-center justify-center p-4 md:p-8">
