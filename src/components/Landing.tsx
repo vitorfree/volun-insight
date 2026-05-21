@@ -105,37 +105,34 @@ export function Landing({ onStart }: { onStart: () => void }) {
         </section>
 
         <footer className="py-8 border-t border-navy/15">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-            <Logo size={24} color="#03038c" />
-            <div className="flex items-center gap-6">
-              <a
-                href="https://freehelper.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-navy/70 hover:text-navy transition-colors text-sm"
-              >
-                <Globe size={16} strokeWidth={2} />
-                freehelper.com.br
-              </a>
-              <a
-                href="https://instagram.com/freehelper"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-navy/70 hover:text-navy transition-colors text-sm"
-              >
-                <Instagram size={16} strokeWidth={2} />
-                @freehelper
-              </a>
-              <a
-                href="https://linkedin.com/company/freehelper"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-navy/70 hover:text-navy transition-colors text-sm"
-              >
-                <Linkedin size={16} strokeWidth={2} />
-                Freehelper
-              </a>
-            </div>
+          <div className="flex items-center justify-center gap-6">
+            <a
+              href="https://freehelper.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-navy/70 hover:text-navy transition-colors text-sm"
+            >
+              <Globe size={16} strokeWidth={2} />
+              freehelper.com.br
+            </a>
+            <a
+              href="https://instagram.com/freehelper"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-navy/70 hover:text-navy transition-colors text-sm"
+            >
+              <Instagram size={16} strokeWidth={2} />
+              @freehelper
+            </a>
+            <a
+              href="https://linkedin.com/company/freehelper"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-navy/70 hover:text-navy transition-colors text-sm"
+            >
+              <Linkedin size={16} strokeWidth={2} />
+              Freehelper
+            </a>
           </div>
         </footer>
       </div>
