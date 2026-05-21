@@ -95,6 +95,15 @@ export function Landing({ onStart }: { onStart: () => void }) {
                 <div>
                   <div className="font-semibold text-navy mb-1">{f.title}</div>
                   <div className="text-sm text-navy/80">{f.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-xs text-navy/70 text-center">
+            🔒 Seus dados são tratados conforme LGPD e usados apenas para gerar seu diagnóstico.
+          </div>
+        </section>
+
         <footer className="py-8 border-t border-navy/15">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <Logo size={24} color="#03038c" />
@@ -129,14 +138,6 @@ export function Landing({ onStart }: { onStart: () => void }) {
             </div>
           </div>
         </footer>
-      </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 text-xs text-navy/70 text-center">
-            🔒 Seus dados são tratados conforme LGPD e usados apenas para gerar seu diagnóstico.
-          </div>
-        </section>
       </div>
     </div>
   );
