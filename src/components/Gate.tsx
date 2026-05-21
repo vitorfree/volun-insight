@@ -11,6 +11,16 @@ export interface LeadData {
   size: string;
 }
 
+const Field = ({ icon: Icon, ...props }: any) => (
+  <div className="relative">
+    <Icon size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-navy/50" strokeWidth={2} />
+    <input
+      {...props}
+      className="w-full bg-white border-[1.5px] border-[#e4e4f0] rounded-xl pl-11 pr-3 py-3 outline-none transition-colors focus:border-navy text-navy placeholder:text-navy/40"
+    />
+  </div>
+);
+
 export function Gate({ onSubmit }: { onSubmit: (l: LeadData) => void }) {
   const [data, setData] = useState<LeadData>({ nome: "", email: "", empresa: "", cargo: "", size: "" });
   const [error, setError] = useState("");
@@ -23,21 +33,11 @@ export function Gate({ onSubmit }: { onSubmit: (l: LeadData) => void }) {
     onSubmit(data);
   };
 
-  const Field = ({ icon: Icon, ...props }: any) => (
-    <div className="relative">
-      <Icon size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-navy/50" strokeWidth={2} />
-      <input
-        {...props}
-        className="w-full bg-white border-[1.5px] border-[#e4e4f0] rounded-xl pl-11 pr-3 py-3 outline-none transition-colors focus:border-navy text-navy placeholder:text-navy/40"
-      />
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-navy radial-decor flex items-center justify-center p-4 md:p-8">
       <div className="w-full max-w-[960px] grid md:grid-cols-2 rounded-[24px] overflow-hidden shadow-strong">
         {/* Left */}
-        <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-[52px] hidden md:block overflow-hidden">
+        <div className="relative bg-navy border border-white/10 p-8 md:p-[52px] hidden md:block overflow-hidden">
           <img src={grafMao} alt="" aria-hidden className="pointer-events-none absolute -right-10 -bottom-8 w-[240px] opacity-30 select-none" />
           <div className="relative">
             <div className="text-cyan text-sm font-medium mb-3">Quase lá!</div>
