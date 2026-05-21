@@ -1,4 +1,5 @@
 import { Logo, ClockIcon } from "./Logo";
+import { Globe, Instagram, Linkedin } from "lucide-react";
 import grafLupa from "@/assets/graf-lupa.png";
 import grafPorta from "@/assets/graf-porta.png";
 import grafLapis from "@/assets/graf-lapis.png";
