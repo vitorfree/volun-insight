@@ -38,7 +38,7 @@ export function Gate({ onSubmit }: { onSubmit: (l: LeadData) => void }) {
       <div className="w-full max-w-[960px] grid md:grid-cols-2 rounded-[24px] overflow-hidden shadow-strong">
         {/* Left */}
         <div className="relative bg-navy border border-white/10 p-8 md:p-[52px] hidden md:block overflow-hidden">
-          <img src={grafMao} alt="" aria-hidden className="pointer-events-none absolute -right-10 -bottom-8 w-[240px] opacity-30 select-none" />
+          <img src={grafMao} alt="" aria-hidden className="pointer-events-none absolute -right-10 -bottom-8 w-[240px] opacity-60 select-none brightness-0 invert" />
           <div className="relative">
             <div className="text-cyan text-sm font-medium mb-3">Quase lá!</div>
             <h2 className="font-serif text-4xl text-white mb-4">
